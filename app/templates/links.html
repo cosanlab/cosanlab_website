@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+  
+{% block content %}
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-sm-12">
+			<h2>Links</h2>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-sm-4">
+			<div class = "containersoftware">
+				<h3>Python Tools</h3>
+				<ul>
+					<li><a href="http://scikit-learn.org/stable/">Machine-Learning Toolbox</a></li>
+					<li><a href="http://nipy.sourceforge.net/nipype/">Image processing pipeline</a></li>
+					<li><a href="http://nilearn.github.io/">Image Analysis Toolbox</a></li>
+					<li><a href="http://flask.pocoo.org/">Microframework that powers this website</a></li>
+					<li><a href="http://ipython.org/notebook.html">Modern day lab notebooks</a></li>
+			</div>
+		</div>
+                <div class = "col-sm-4">
+			<div class = "containersoftware">
+                        	<h3>Modeling Tools</h3>
+                		<a href = "http://mc-stan.org/">Hierarchical Bayesian Model Estimation</a>
+			</div>
+		</div>
+		<div class = "col-sm-4">
+                	<div class = "containersoftware">
+				<h3>Statistics</h3>
+				<a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">Excellent open-source book on machine-learning.</a>
+			</div>
+		</div>
+        </div>
+</div>
+
+
+{% endblock %}

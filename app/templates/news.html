@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% set active_page = "news" %}  
+{% block content %}
+
+<div class = "container">
+	<div class = "col-sm-12 col-sm-offset-3">
+        	<div class = "row">
+                	<div class = "col-sm-12">
+                        	<h2>News</h2>
+                	</div>
+        	</div>
+     
+		<a class="twitter-timeline" href="https://twitter.com/cosanlab" data-widget-id="565687374458683394">Tweets by @cosanlab</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+</div>
+
+{% endblock %}

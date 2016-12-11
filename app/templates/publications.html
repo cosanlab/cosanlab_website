@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% set active_page = "publications" %}  
+{% block content %}
+
+{% for year in uyear %}
+<div class = "container">
+	<div class = "row">
+		<div class = "col-sm-12">
+			<h2>{{year|e}}</h2>
+  		</div>
+      		{% for paper in get_paper_by_year(year) %}
+      		<div class = "container">
+			<div class = "row">
+				<div class = "col-sm-8 col-sm-offset-1">         
+      					<p class="standard_font">{{ paper.citation|e }}</p>
+      				</div>
+				<div class = "col-sm-1">
+					<a class="btn btn-default" href = "static/papers/{{ paper.link |e}}" >PDF</a>
+				</div>
+			</div>
+		</div>
+      		{% endfor %}
+	</div>
+</div>
+ 
+{% endfor %}
+
+{% endblock %}
