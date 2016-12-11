@@ -7,6 +7,6 @@ if sys.executable !=INTERP:
 
 sys.path.append(os.getcwd())
 
-from cosanlab_website.app import app as application
+from app import app as application
 
 
