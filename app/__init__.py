@@ -1,10 +1,12 @@
 import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_script import Shell, Manager
 import imp
 
-basedir = '/home/lukcha5/cosanlab'
-keypath = imp.load_source('keys', os.path.join(basedir,'keys','keys.py'))
+basedir = '/Users/lukechang/Github/cosanlab_web'
+# basedir = '/home/lukcha5/cosanlab'
+keypath = imp.load_source('keys', os.path.join(basedir,'keys.py'))
 keys = keypath.Keys()
 
 app = Flask(__name__)
@@ -12,7 +14,7 @@ app.secret_key = keys.secret_key
 app.config['SQLALCHEMY_DATABASE_URI'] = keys.SQLALCHEMY_DATABASE_URI
 # app.config.from_object('config')
 db = SQLAlchemy(app)
-
+manager = Manager(app)
 
 from app import views, models
 

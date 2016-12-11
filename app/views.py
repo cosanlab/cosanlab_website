@@ -20,10 +20,14 @@ def people():
 		utitle.append('Postdocs')
 	if 'Graduate Students' in titles:
 		utitle.append('Graduate Students')
+	if 'Lab Manager' in titles:
+		utitle.append('Lab Manager')
 	if 'Research Assistants' in titles:
 		utitle.append('Research Assistants')
 	if 'Coding Companion' in titles:
 		utitle.append('Coding Companion')
+	if 'Alumni' in titles:
+		utitle.append('Lab Alumni')
 		
         return render_template('people.html', utitle = utitle)
 
