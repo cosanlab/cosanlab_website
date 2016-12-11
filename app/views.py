@@ -26,7 +26,7 @@ def people():
 		utitle.append('Research Assistants')
 	if 'Coding Companion' in titles:
 		utitle.append('Coding Companion')
-	if 'Alumni' in titles:
+	if 'Lab Alumni' in titles:
 		utitle.append('Lab Alumni')
 		
         return render_template('people.html', utitle = utitle)
