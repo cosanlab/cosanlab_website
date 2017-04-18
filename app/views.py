@@ -28,7 +28,7 @@ def people():
 		utitle.append('Coding Companion')
 	if 'Lab Alumni' in titles:
 		utitle.append('Lab Alumni')
-		
+
         return render_template('people.html', utitle = utitle)
 
 @app.route('/publications')
@@ -42,6 +42,10 @@ def publications():
 @app.route('/resources')
 def resources():
         return render_template('resources.html')
+
+@app.route('/teaching')
+def teaching():
+        return render_template('teaching.html')
 
 @app.route('/participate')
 def participate():
@@ -62,4 +66,3 @@ def fourohfour(error):
 @app.route('/login')
 def login():
 	return render_template('login.html')
-
