@@ -28,12 +28,16 @@
 								<div class = "row">
 									<h3>{{ person.name|e }}</h3>
 								</div>
-								<div class = "row">
-									<a class = "btn btn-default" href = "mailto:{{person.email | e}}">Email</a>
-								</div>
-								<div class = "row">
-									<a class = "btn btn-default" href = "{{person.website|e}}">Website</a>
-								</div>
+								{% if person.email %}
+									<div class = "row">
+										<a class = "btn btn-default" href = "mailto:{{person.email | e}}">Email</a>
+									</div>
+								{% endif %}
+								{% if person.website %}
+									<div class = "row">
+										<a class = "btn btn-default" href = "{{person.website|e}}">Website</a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 				      <div class = "col-sm-7">
