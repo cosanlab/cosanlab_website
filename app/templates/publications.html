@@ -14,13 +14,17 @@
 		      		<p class="standard_font">{{ paper.citation|e }}</p>
 		      	</div>
 						<div class = "col-sm-3 tpbutton btn-toolbar" style="text-align:left">
+							{% if '.pdf' in paper.link %}
 								<a class="btn btn-default" href = "static/papers/{{ paper.link |e}}">PDF</a>
-								{% if paper.code %}
-									<a class="btn btn-default" href = "{{ paper.code |e }}">Code</a>
-								{% endif %}
-								{% if paper.data %}
-									<a class="btn btn-default" href = "{{ paper.data |e }}">Data</a>
-								{% endif %}
+							{% else %}
+								<a class="btn btn-default" href = {{ paper.link | e}}>PDF</a>
+							{% endif %}
+							{% if paper.code %}
+								<a class="btn btn-default" href = "{{ paper.code |e }}">Code</a>
+							{% endif %}
+							{% if paper.data %}
+								<a class="btn btn-default" href = "{{ paper.data |e }}">Data</a>
+							{% endif %}
 						</div>
 					</div>
 				</div>
