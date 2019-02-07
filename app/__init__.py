@@ -1,12 +1,13 @@
 import os
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+# from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_script import Shell, Manager
 from flask_migrate import Migrate
 import imp
 
-# basedir = '/Users/lukechang/Github/cosanlab_web'
-basedir = '/home/lukcha5/cosanlab'
+basedir = '/Users/lukechang/Github/cosanlab_web'
+# basedir = '/home/lukcha5/cosanlab'
 keypath = imp.load_source('keys', os.path.join(basedir,'keys.py'))
 keys = keypath.Keys()
 
