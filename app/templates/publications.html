@@ -16,7 +16,7 @@
 						<div class = "col-sm-3 tpbutton btn-toolbar" style="text-align:left">
 							{% if '.pdf' in paper.link %}
 								<a class="btn btn-default" href = "static/papers/{{ paper.link |e}}">PDF</a>
-							{% else %}
+							{% elif 'http' in paper.link %}
 								<a class="btn btn-default" href = {{ paper.link | e}}>PDF</a>
 							{% endif %}
 							{% if paper.code %}
