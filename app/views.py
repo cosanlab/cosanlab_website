@@ -46,9 +46,9 @@ def resources():
 def teaching():
         return render_template('teaching.html')
 
-@app.route('/participate')
-def participate():
-    return render_template('participate.html')
+@app.route('/positions')
+def positions():
+    return render_template('positions.html')
 
 @app.route('/news')
 def news():
