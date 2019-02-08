@@ -54,10 +54,6 @@ def positions():
 def news():
     return render_template('news.html')
 
-@app.route('/links')
-def links():
-    return render_template('links.html')
-
 @app.errorhandler(404)
 def fourohfour(error):
 	return render_template('fourohfour.html')
