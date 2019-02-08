@@ -12,7 +12,11 @@
 				{% if person.title == "Lab Alumni" %}
 					<div class = "row">
 						<div class = "col-sm-2">
-							<h3>{{ person.name|e }}</h3>
+							{% if person.website %}
+								<a href = "{{person.website|e}}"><h3>{{ person.name|e }}</h3></a>
+							{% else %}
+								<h3>{{ person.name|e }}</h3>
+							{% endif %}
 						</div>
 						<div class = "col-sm-7">
 							<p class="standard_font">{{person.bio|e}}</p>
