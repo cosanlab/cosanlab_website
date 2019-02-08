@@ -10,8 +10,8 @@
 			</div>
 			{% for person in get_person_by_title(title) %}
 				{% if person.title == "Lab Alumni" %}
-					<div class = "row">
-						<div class = "col-sm-2">
+					<div class = "row" >
+						<div class = "col-sm-2" >
 							{% if person.website %}
 								<a href = "{{person.website|e}}"><h3>{{ person.name|e }}</h3></a>
 							{% else %}
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				{% else %}
-					<div class = "row">
+					<div class = "row" style="padding: 10px">
 						<div class = "col-sm-2">
 							<img class="img-responsive" src = "static/img/{{person.pic|e}}">
 						</div>
