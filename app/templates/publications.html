@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% set active_page = "publications" %}
 {% block content %}
+
+<div class = "container">
+	{% for tag in utags %}
+		<h3>{{ tag }} {{ tag.value }}<h3>
+	{% endfor %}
+</div>
 	{% for year in uyear %}
 		<div class = "container">
 			<div class = "row">

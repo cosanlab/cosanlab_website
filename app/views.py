@@ -1,5 +1,30 @@
 from app import app, db, models
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, jsonify
+
+# Helper Functions
+def get_sorted_years(data):
+    years = [int(x.year) for x in data]
+    uyear = list(set(years)) #get unique years - may need to reverse sort eventually
+    uyear.sort(reverse=True)
+    return uyear
+
+def flatten_list(tags):
+    flat = []
+    for sublist in tags:
+        for i in sublist:
+            flat.append(i)
+    return flat
+
+def get_tag_counts(data):
+    tags = [x.tags for x in data]
+    flat = flatten_list(tags)
+    tag_list = list(set(flat))
+    return dict((i, flat.count(i)) for i in tag_list)
+
+def get_resource_type_list(data):
+    resource_list = list(set([x.type for x in data]))
+    resource_list.sort(reverse=False)
+    return resource_list
 
 # Routes
 @app.route('/')
@@ -32,19 +57,22 @@ def people():
 
 @app.route('/publications')
 def publications():
-	data = models.Papers.query.all()
-	years = [int(x.year) for x in data]
-	uyear = list(set(years)) #get unique years - may need to reverse sort eventually
-	uyear.sort(reverse=True)
-	return render_template('publications.html', uyear = uyear)
+    data = models.Papers.query.all()
+    return render_template('publications.html',
+                            uyear=get_sorted_years(data),
+                            utags=jsonify(get_tag_counts(data)))
 
 @app.route('/resources')
 def resources():
-        return render_template('resources.html')
+    data = models.Resources.query.all()
+
+    return render_template('resources.html',
+                            resource_type_list=get_resource_type_list(data),
+                            resource_list=data)
 
 @app.route('/teaching')
 def teaching():
-        return render_template('teaching.html')
+    return render_template('teaching.html')
 
 @app.route('/positions')
 def positions():
@@ -57,7 +85,3 @@ def news():
 @app.errorhandler(404)
 def fourohfour(error):
 	return render_template('fourohfour.html')
-
-@app.route('/login')
-def login():
-	return render_template('login.html')

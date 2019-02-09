@@ -35,3 +35,12 @@ def utility_processor2():
 		dat = models.User.query.filter_by(title = title)
 		return dat
 	return dict(get_person_by_title=get_person_by_title)
+
+# @app.context_processor
+# def utility_processor3():
+# 	def get_paper_counts():
+# 		return dict(get_paper_by_year=get_paper_by_year)
+# 	def get_person_by_title(title):
+# 		dat = models.User.query.filter_by(title = title)
+# 		return dat
+# 	return dict(get_person_by_title=get_person_by_title)

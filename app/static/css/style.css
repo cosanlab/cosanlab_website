@@ -32,8 +32,8 @@
 }
 
 .navbar a {
-	color: #FFFFFF; 
-	font-family: Helvetica, Arial, sans-serif; 
+	color: #FFFFFF;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	text-transform: uppercase;
 }
@@ -113,7 +113,7 @@
     }
 }
 
- 
+
 .containerbody {
 	margin: 0 auto;
 	width: 940px;
@@ -125,7 +125,7 @@
 	margin-top: 0;
 	margin-bottom: 0;
 }
- 
+
 h1 {
 	font-size: 30px;
 	text-align: center;
@@ -136,7 +136,7 @@ h1 {
 h2 {
 	font-size: 22;
 	text-align: left;
-} 
+}
 
 h3 {
 	font-size: 20px;
@@ -165,8 +165,7 @@ h3 {
 	font-size: 22;
 }
 
-
-.col-sm-12>h2 {
+h2 {
 	font-size: 22;
         text-align: left;
         font-family: Helvetica, Arial, sans-serif;
@@ -199,7 +198,7 @@ h3 {
 	font-weight: 100;
         font-family: Helvetica, Arial, sans-serif;
 	letter-spacing: -2px;
-}	
+}
 
 /* tab formatting */
 .tab-content {
@@ -214,7 +213,7 @@ h3 {
 
 .nav-tabs>li>a {
 	border: none;
-	background-color: #FFFFFF; 
+	background-color: #FFFFFF;
 	color:#333333;
 	border-bottom: transparent;
 }
@@ -228,7 +227,7 @@ nav-tabs {
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
 	color: #33CCFF;
 	border: 1px solid #999999;
-	background-color: #FFFFFF;	
+	background-color: #FFFFFF;
 	border-bottom: transparent !important;
 }
 
@@ -238,7 +237,7 @@ nav-tabs {
 }
 
 .container_research {
-	margin: 50px; 
+	margin: 50px;
 }
 
 .standard_font {
@@ -256,6 +255,3 @@ nav-tabs {
         color: #000000;
         letter-spacing: -2;
 }
-
-
-

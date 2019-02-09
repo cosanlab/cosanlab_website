@@ -1,68 +1,32 @@
 {% extends "layout.html" %}
-  
+
 {% block content %}
-
 <div class = "container">
-	<div class = "row">
-		<div class = "col-sm-12">
-			<h2>Software</h2>
-		</div>
-	</div>
-	<div class = "row">
-		<div class = "col-sm-4">
-			<div class = "containersoftware">
-				<h3>nltools</h3>
-				<p class="standard_font_box">We maintain a <a href = "https://github.com/ljchang/neurolearn">Python toolbox</a> for neuroimaging analysis.  It includes tools for manipulating imaging data and performing univariate and multivariate analyses.</p>
-			</div>
-		</div>
-                <div class = "col-sm-4">
-			<div class = "containersoftware">
-                        	<h3>Cosanlab Github Repository</h3>
-                        	<p class="standard_font_box">We share many repositories for data analysis, experimental paradigms, and stimuli on our <a href = "https://github.com/cosanlab">lab github repository</a> 
-</p>
-                	</div>
-		</div>
-		<div class = "col-sm-4">
-                	<div class = "containersoftware">
-				<h3>Neuro-Learn</h3>
-				<p class="standard_font_box">We have developed and maintain <a href=http://neuro-learn.org>Neuro-Learn.org</a>,a web application for performing multivariate prediction analyses for data hosted on <a href=http://neurovault.org>Neurovault</a>. 
-			</div>
-		</div>
-        </div>
-	<div class = "row">
-		<div class = "col-sm-12">
-			<h2>Tutorials</h2>
-		</div>
-	</div>
-	<div class = "row">
-		<div class = "col-sm-4">
-			<div class = "containersoftware">
-				<h3>Model Fitting Tutorial</h3>
-				<p class="standard_font_box">Here is a brief <a href = "http://dubioussentiments.wordpress.com/2014/07/09/matlab-object-oriented-model-fitting-tutorial/">tutorial</a> on using some of our lab's software to flexibly fit computational models to multisubject data in Matlab</p>
-			</div>
-		</div>
-		<div class = "col-sm-4">
-			<div class = "containersoftware">
-				<h3>R Tutorials</h3>
-				<p class="standard_font_box">Here are a few likely outdated tutorials on using the <a href = "http://www.r-project.org/">R Statistical Software</a> from a <a href = "https://sites.google.com/site/uarworkshop/home">course</a> I taught many years ago at the University of Arizona.</p>
-				<ul>
-					<li><a href = "static/papers/FileIO_HO.pdf">File I/O</a></li>
-					<li><a href = "static/papers/Regress_HO.pdf">Regression Analyses</a></li>
-					<li><a href = "static/papers/LME4_HO.pdf">LME4</a></li>
-					<li><a href = "static/papers/MM_Intro_HO.pdf">Mixed Effects Modeling</a></li>
-					<li><a href = "static/papers/Graphs_HO.pdf">Plotting</a></li>
-					<li><a href = "static/papers/AdvPlot_HO.pdf">Advanced Plotting</a></li>
-				</ul>		
-			</div>
-                </div>
-                <div class = "col-sm-4">
-                        <div class = "containersoftware">
-                                <h3>fMRI Nipype Preprocessing Tutorial</h3>
-                                <p class="standard_font_box">Here is a <a href = "http://cosanlab.com/static/talks/Nipype_Overview/Nipype_Overview.slides.html">talk</a> that provides a brief overview of creating preprocessing pipelines with Nipype. The accompanying <a href = "https://github.com/ljchang/CosanlabToolbox/blob/master/Python/ImageProcessing/Nipype_SPM_Preproc.py">script</a> can be found in our github repository.</p>
-                        </div>
-                </div>
-	</div>
-</div>
 
+  {% for resource_type in resource_type_list %}
+      <h2>{{resource_type}}</h2>
+      <div class="table-wrapper">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for resource in resource_list %}
+              {% if resource.type == resource_type %}
+                <tr>
+                  <td><a href="{{ resource.link }}">{{ resource.name}}</a></td>
+                  <td>{{ resource.description }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
