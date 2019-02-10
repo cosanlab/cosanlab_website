@@ -14,7 +14,7 @@ keys = keypath.Keys()
 app = Flask(__name__)
 app.secret_key = keys.SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = keys.SQLALCHEMY_DATABASE_URI
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 manager = Manager(app)
 
@@ -35,12 +35,3 @@ def utility_processor2():
 		dat = models.User.query.filter_by(title = title)
 		return dat
 	return dict(get_person_by_title=get_person_by_title)
-
-# @app.context_processor
-# def utility_processor3():
-# 	def get_paper_counts():
-# 		return dict(get_paper_by_year=get_paper_by_year)
-# 	def get_person_by_title(title):
-# 		dat = models.User.query.filter_by(title = title)
-# 		return dat
-# 	return dict(get_person_by_title=get_person_by_title)

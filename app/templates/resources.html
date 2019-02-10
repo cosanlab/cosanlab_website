@@ -4,29 +4,32 @@
 <div class = "container">
 
   {% for resource_type in resource_type_list %}
+    <div class = "row">
       <h2>{{resource_type}}</h2>
-      <div class="table-wrapper">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
+    </div>
+    <div class="table-wrapper">
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {% for resource in resource_list %}
-              {% if resource.type == resource_type %}
-                <tr>
-                  <td><a href="{{ resource.link }}">{{ resource.name}}</a></td>
-                  <td>{{ resource.description }}</td>
-                </tr>
-              {% endif %}
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+        <tbody>
+          {% for resource in resource_list %}
+            {% if resource.type == resource_type %}
+              <tr class="clickable-row" data-url="{{ resource.link }}">
+                <td><a href="{{ resource.link }}">{{ resource.name}}</a></td>
+                <td>{{ resource.description  }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% endfor %}
 </div>
 
 {% endblock %}
+Behavioral science project to provide real-time feedback of queue length at a cafe using computer vision and machine-learning. Developed in collaboration with Dali Lab and King Arthur Flour.

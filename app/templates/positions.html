@@ -2,44 +2,24 @@
 {% set active_page = "participate" %}
 {% block content %}
 
-<div class = "container">
-	<div class = "row">
-		<div class = "col-sm-12">
-			<h2>Open Positions</h2>
-		</div>
-	</div>
-	<div class = "row">
-		<div class = "containersoftware">
-			<h3>Postdocs</h3>
-			<p class="standard_font_box">The Computational Social Affective Neuroscience Lab seeks to recruit up to 3 postdoctoral researchers to begin Winter 2019 to work on federally-funded research investigating naturalistic elicitations of emotional experiences. Projects include collecting data via fMRI, intracranial EEG, and facial expressions. Ideal candidates will have:  (1) a PhD in a relevant quantitative discipline (e.g., neuroscience, computer science, physics, applied math),  (2) a strong background in signal processing and data analysis (e.g., computational modeling, time series analysis, machine-learning, computer vision), (3) a demonstrated record of creativity and innovation, & (4) an interest in contributing to the development of open source software (e.g., Python). Interested applicants should contact <a href="mailto:luke.j.chang@dartmouth.edu">Dr. Luke Chang</a> with a brief statement of interest (1 page maximum), a CV, and 2 letters of reference.
-			</p>
-		</div>
-	</div>	<div class = "row">
-		<div class = "containersoftware">
-			<h3>Graduate Students</h3>
-			<p class="standard_font_box">Dr. Chang will not be accepting graduate students fall 2019</p>
-		</div>
-	</div>
-<!--
-	<div class = "row">
-		<div class = "containersoftware">
-                        <h3>Lab Manager</h3>
-                	<p class="standard_font_box">The laboratory is seeking to hire a full-time lab manager to start Summer/Fall 2015 for a two-year commitment.  The primary responsibilities will include interviewing and supervising research assistants, maintaining laboratory equipment and computers, assisting with IRB protocols and grants, and other administrative duties.  The position will also provide an opportunity to participate in research such as coordinating and conducting behavioral and neuroimaging experiments, developing experimental paradigms, and analyzing data.  S/he will have the opportunity to participate in the broader intellectual community at Dartmouth’s Psychological & Brain Sciences Department.  Competitive candidates will be self-motivated, have strong organizational, time-management, and interpersonal skills, and excel at multi-tasking. The ideal candidate will likely make creative contributions to the lab’s research program, which may result in opportunities to co-author manuscripts.  Interested parties should <a href = "mailto:luke.j.chang@dartmouth.edu">contact</a> Dr. Chang for more information about the position.</p>
-		</div>
-	</div>
-	<div class = "row">
-                <div class = "containersoftware">
-			<h3>Research Technician</h3>
-			<p class="standard_font_box">The laboratory will be hiring one full-time research technician to start Fall 2015.   The primary responsibilities will include developing web apps suitable for collecting simultaneous multi-agent data, developing infrastructure for an automated analysis pipeline using a high performance computing cluster, developing new tools for affective computing, and contributing to and maintaining the laboratory’s code repository.  Competitive candidates will have a background in computer science, engineering, physics, economics, or applied mathematics and will likely have several years of experience with quantitative methods (e.g., statistical analysis of fMRI data, data-mining, or machine-learning) or technical computing (e.g., programming preferably C/C++, javascript, python, or matlab; building web applications; databases; high performance computing, etc.).  We are particularly interested in individuals with extensive experience building web applications in any of the following frameworks: meteor, flask, django, or ruby. Please <a href = "mailto:luke.j.chang@dartmouth.edu">contact</a> the lab director for more information about the position.</p>
-		</div>
-	</div>
--->
-	<div class = "row">
-		<div class = "containersoftware">
-			<h3>Research Assistants</h3>
-          <p class="standard_font_box">The laboratory has openings for part-time volunteer research assistants to start Winter 2019. Primary responsibilities include assisting in the collection, processing, and analysis of behavioral, psychophysiological, and neuroimaging data.  We require a minimum commitment of 10 hours per week for at least one quarter.  Please <a href = "mailto:luke.j.chang@dartmouth.edu">email</a> Dr. Chang for more information.</p>
-		</div>
-	</div>
-</div>
+	<div class = "container">
+		{% for position_type in position_type_list %}
+			<div class = "row">
+				<h2>{{ position_type }}</h2>
+			</div>
+
+			{% for job in positions_list %}
+				{% if job.position == position_type %}
+					<div class = "row">
+						<div class = "col-sm-12">
+							<div class = "containersoftware">
+								 <p class="standard_font_box">{{ job.description }}</p>
+							 </div>
+						 </div>
+					 </div>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</div
 
 {% endblock %}
