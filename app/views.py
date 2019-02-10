@@ -57,9 +57,9 @@ def get_type_list(data):
     return resource_list
 
 def get_position_type_list(data):
-    resource_list = list(set([x.position for x in data]))
-    resource_list.sort(reverse=False)
-    return resource_list
+    position_list = list(set([x.position for x in data]))
+    position_list.sort(reverse=False)
+    return position_list
 
 # Routes
 @app.route('/')
@@ -112,5 +112,3 @@ def news():
 @app.errorhandler(404)
 def fourohfour(error):
 	return render_template('fourohfour.html')
-
-    

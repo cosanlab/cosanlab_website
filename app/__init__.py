@@ -35,3 +35,10 @@ def utility_processor2():
 		dat = models.User.query.filter_by(title = title)
 		return dat
 	return dict(get_person_by_title=get_person_by_title)
+
+@app.context_processor
+def utility_processor3():
+	def get_position_by_type(title):
+		dat = models.Position.query.filter_by(title = title)
+		return dat
+	return dict(get_position_by_type=get_position_by_type)
