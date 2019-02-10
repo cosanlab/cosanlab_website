@@ -2,60 +2,29 @@
 
 {% block content %}
 
-<div class = "container">
-	<div class = "row">
-		<div class = "col-sm-12">
-			<h2>Classes</h2>
-		</div>
-	</div>
-	<div class = "row">
-	<div class = "col-sm-12">
-    <div class = "containersoftware">
-       <h3>PSYC53: Social & Affective Motivations in Decision-Making <a href = "static/syllabi/PSYC53_Syllabus.pdf"><img src="static/img/file_pdf-512.png" height="35"/></a></h3>
-       <button type="submit" style="background-color:transparent; border-color:transparent;">
-
-       </button>
-       <p class="standard_font_box">
-          Why do we tip restaurant servers, cab drivers, and coffee baristas? Why does our grocery shopping behavior change when we are hungry? This course will explore the social and affective motivations that influence how we make everyday decisions from the diverse perspectives of psychology, economics, and neurobiology. This course will provide an introduction to how social psychological constructs and feelings can be modeled using tools from decision theory (e.g., value & uncertainty) and how these processes might be instantiated in the brain. Topics to be covered include other- regarding preferences (e.g., trust, reciprocity, fairness, and altruism), affective motivations (e.g., risk, dread, regret, and guilt), and social considerations (e.g., reputation, conformity, and social-comparison).
-          This course incorporates a <a href="https://dcal.dartmouth.edu/initiatives/experiential-learning/projects/social-impact">social impact practicum.</a>
-        </p>
-      </div>
-		</div>
-		<div class = "col-sm-12">
-        <div class = "containersoftware">
-  				<h3>PSYC63: Experimental Study of Social Behavior <a href = "static/syllabi/PSYC63_Syllabus.pdf"><img src="static/img/file_pdf-512.png" height="35"/></a></h3>
-  				<p class="standard_font_box">As computers become increasingly integrated with our daily lives, there is an unprecedented amount of data recording how humans interact with the world through the internet, mobile sensing, and social media. There is currently overwhelming demand for social scientists who know how to use this data to answer questions about social behavior. This course provides an introduction to data science and explores modern issues pertaining to experimental design, hypothesis testing, and data collection and analysis. Students will be expected to design, run, and analyze, and write up an experiment answering a question of their choosing. Students will learn how to use the open source Python language to process, analyze, and visualize data. All labs can be accessed on <a href="https://github.com/ljchang/psyc63">github</a>.  This class will be useful for students planning to go on to graduate school or work in industry as a data analyst/scientist.
-          </p>
-			  </div>
-		</div>
-    <div class = "col-sm-12">
-    <div class = "containersoftware">
-        <h3>PSYC84: The Power of Beliefs <a href = "static/syllabi/PSYC84_Syllabus.pdf"><img src="static/img/file_pdf-512.png" height="35"/></a></h3>
-        <p class="standard_font_box">How do beliefs affect clinical outcomes? This course provides an in-depth examination of the role of beliefs and expectations in the manifestation of psychological symptoms and their treatment. Topics to be covered include the psychological and biological bases of pharmacological placebo effects, the mechanisms underlying psychotherapy (e.g., patient and provider expectations), and also how cultural expectations impact how psychological symptoms are experienced (e.g., hallucinations, delusions, and somatization).
-        </p>
-    </div>
-  </div>
-  </div>
-	<div class = "row">
-		<div class = "col-sm-12">
-			<h2>Summer School</h2>
-		</div>
-	</div>
-	<div class = "row">
-		<div class = "col-sm-12">
-			<div class = "containersoftware">
-				<h3>Methods in Neuroscience at Dartmouth Computational Summer School</h3>
-				<p class="standard_font_box">There is a growing gap between how graduate students in psychology and neuroscience are trained and what they actually need to know to do cutting edge work.  In addition, there is increasing interest in supplementing the traditional reductionist approach to studying the elements of brain, cognition, and behavior in isolation, to integrating how these elements interact as a cohesive complex system. This entails considering not just which elements in a network interact, but also the content of the interaction, and the dynamics of how this information flows through networks over time. This general issue is present in multiple domains, with an accompanying need for similar tools: neurophysiologists studying spiking activity in ensembles of single neurons, cognitive neuroscientists studying whole-brain activity levels, and social psychologists studying group interactions.
-Our curriculum is motivated by the realization that there is a common core of computational methods that apply across different subfields of neuroscience, with exciting opportunities for crossover across these subfields.
-Thus, our summer program aims to provide integrated training of network methods at the circuit, whole-brain, and social network levels. The overall format has short lectures in the morning, followed by hands-on tutorial-style labs, and a hackathon in which students will collaboratively work on projects with faculty. Themes running through the curriculum include open tools and data, data visualization, statistical modeling, and model comparison.
-The summer school will be taught by faculty with unique expertise in using innovative computational techniques to understand network dynamics at multiple scales.
-See our <a href="https://summer-mind.github.io/">website</a> for more information.
-        </p>
+	<div class = "container">
+		{% for teaching_type in teaching_type_list %}
+			<div class = "row">
+				<h2>{{ teaching_type }}</h2>
 			</div>
-		</div>
 
-	</div>
-</div>
-
+			{% for teaching in teaching_list %}
+				{% if teaching.type == teaching_type %}
+					<div class = "row">
+						<div class = "col-sm-12">
+							<div class = "containersoftware">
+								<h3>{{ teaching.name }}
+									{% if teaching.syllabus %}
+										<a href = "/static/syllabi/{{ teaching.syllabus }}"><img src="static/img/file_pdf-512.png" height="35"/></a>
+									{% endif %}
+								</h3>
+					       <p class="standard_font_box">{{ teaching.description }}</p>
+							 </div>
+						 </div>
+					 </div>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</div
 
 {% endblock %}

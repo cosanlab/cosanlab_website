@@ -64,3 +64,15 @@ class Resources(db.Model):
 	link = db.Column(db.String(300), nullable=False)
 	def __repr__(self):
 		return '<Resources %r>' % (self.name)
+
+class Teaching(db.Model):
+	__tablename__ = 'teaching'
+	id = db.Column(db.Integer, primary_key=True)
+	type = db.Column(db.String(300))
+	name = db.Column(db.String(300))
+	description = db.Column(db.String(1500))
+	syllabus = db.Column(db.String(300), nullable=False)
+	code = db.Column(db.String(300), nullable=False)
+	link = db.Column(db.String(300), nullable=False)
+	def __repr__(self):
+		return '<Teaching %r>' % (self.name)

@@ -60,7 +60,7 @@ def publications():
     data = models.Papers.query.all()
     return render_template('publications.html',
                             uyear=get_sorted_years(data),
-                            utags=jsonify(get_tag_counts(data)))
+                            utags=get_tag_counts(data))
 
 @app.route('/resources')
 def resources():
@@ -72,7 +72,10 @@ def resources():
 
 @app.route('/teaching')
 def teaching():
-    return render_template('teaching.html')
+    data = models.Teaching.query.all()
+    return render_template('teaching.html',
+                            teaching_type_list=get_resource_type_list(data),
+                            teaching_list=data)
 
 @app.route('/positions')
 def positions():
