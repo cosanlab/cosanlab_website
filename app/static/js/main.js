@@ -16,7 +16,6 @@ jQuery(document).ready(function($) {
           $(".filter").not('.'+tag).show('3000');
           $('.filter').filter('.'+tag).show('3000');
           window.previousTag = null;
-          });
         } else {
           $('.filter').filter('.'+tag).show('3000');
           // $('.filter').not('.'+previousTag).show('1');
