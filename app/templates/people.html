@@ -42,6 +42,11 @@
 										<a class = "btn btn-default" href = "{{person.website|e}}">Website</a>
 									</div>
 								{% endif %}
+								{% if person.cv %}
+									<div class = "row">
+										<a class = "btn btn-default" href = "static/cvs/{{person.cv|e}}">CV</a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 				      <div class = "col-sm-7">
