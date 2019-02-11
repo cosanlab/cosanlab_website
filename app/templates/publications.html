@@ -2,10 +2,10 @@
 {% set active_page = "publications" %}
 {% block content %}
 
-<div class = "container">
+<div class = "container" style="padding: 10px;">
 	<div class = "row">
 		{% for tag in tag_list %}
-			<a class="btn btn-default" style="font-size: {{ tag.count }}px;">{{ tag.name }}</a>
+			<button class="btn btn-default filter-button" data-filter="{{ tag.name|replace(' ', '-')}}" style="font-size: {{ tag.count }}+10px;">{{ tag.name }}</button>
 		{% endfor %}
 	</div>
 </div>
@@ -17,7 +17,7 @@
 					<h2>{{year|e}}</h2>
 		  	</div>
 		    {% for paper in get_paper_by_year(year) %}
-		    <div class = "container">
+		    <div class = "container filter {% for t in paper.tags %} {{ t |replace(' ', '-')}} {% endfor %}">
 					<div class = "row">
 						<div class = "col-sm-8 col-sm-offset-1">
 		      		<p class="standard_font">{{ paper.citation|e }}</p>
