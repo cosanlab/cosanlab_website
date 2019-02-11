@@ -18,7 +18,7 @@ class User(db.Model):
 	cv = db.Column(db.String(120), nullable=False)
 
 	def __repr__(self):
-		return '<User %r>' % (self.nickname)
+		return self.nickname
 
 class Tags(db.Model):
 	__tablename__ = 'tags'
@@ -43,9 +43,10 @@ class Papers(db.Model):
 	code = db.Column(db.String(300), nullable=False)
 	data = db.Column(db.String(300), nullable=False)
 	tags = db.relationship('Tags', secondary=tagmap, lazy='subquery',
-		backref=db.backref('paper', lazy=True))
+		backref=db.backref('paper', order_by='Papers.year.desc()', lazy=True))
+
 	def __repr__(self):
-		return '<Papers %r>' % (self.nickname)
+		return self.nickname
 
 class Positions(db.Model):
 	__tablename__ = 'positions'
@@ -53,7 +54,7 @@ class Positions(db.Model):
 	position = db.Column(db.String(300))
 	description = db.Column(db.String(500))
 	def __repr__(self):
-		return '<Positions %r>' % (self.position)
+		return self.position
 
 class Resources(db.Model):
 	__tablename__ = 'resources'
@@ -63,7 +64,7 @@ class Resources(db.Model):
 	description = db.Column(db.String(1500))
 	link = db.Column(db.String(300), nullable=False)
 	def __repr__(self):
-		return '<Resources %r>' % (self.name)
+		return self.name
 
 class Teaching(db.Model):
 	__tablename__ = 'teaching'
@@ -75,4 +76,12 @@ class Teaching(db.Model):
 	code = db.Column(db.String(300), nullable=False)
 	link = db.Column(db.String(300), nullable=False)
 	def __repr__(self):
-		return '<Teaching %r>' % (self.name)
+		return self.name
+
+class Research(db.Model):
+	__tablename__ = 'research'
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(300))
+	description = db.Column(db.String(1500))
+	def __repr__(self):
+		return (self.name)

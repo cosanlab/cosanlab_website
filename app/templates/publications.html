@@ -3,10 +3,13 @@
 {% block content %}
 
 <div class = "container">
-	{% for tag in utags %}
-		<h3>{{ tag }} {{ tag.value }}<h3>
-	{% endfor %}
+	<div class = "row">
+		{% for tag in tag_list %}
+			<a class="btn btn-default" style="font-size: {{ tag.count }}px;">{{ tag.name }}</a>
+		{% endfor %}
+	</div>
 </div>
+
 	{% for year in uyear %}
 		<div class = "container">
 			<div class = "row">
@@ -19,7 +22,7 @@
 						<div class = "col-sm-8 col-sm-offset-1">
 		      		<p class="standard_font">{{ paper.citation|e }}</p>
 		      	</div>
-						<div class = "col-sm-3 tpbutton btn-toolbar" style="text-align:left">
+						<div class = "col-sm-3 button btn-toolbar" style="text-align:left">
 							{% if '.pdf' in paper.link %}
 								<a class="btn btn-default" href = "static/papers/{{ paper.link |e}}">PDF</a>
 							{% elif 'http' in paper.link %}

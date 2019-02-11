@@ -1,5 +1,6 @@
 from app import app, db, models
 from flask import render_template, flash, redirect, jsonify
+import pandas as pd
 
 # Helper Functions
 
@@ -34,11 +35,21 @@ def flatten_list(tags):
             flat.append(i)
     return flat
 
+class TagCount(object):
+    def __init__(self, name, count):
+        self.name = name
+        self.count = count
+
+    def __repr__(self):
+        return 'Tags: %s: %s' % (self.name, self.count)
+
 def get_tag_counts(data):
     tags = [x.tags for x in data]
-    flat = flatten_list(tags)
-    tag_list = list(set(flat))
-    return dict((i, flat.count(i)) for i in tag_list)
+    flat = [str(x) for x in flatten_list(tags)]
+    tag_list = [str(x) for x in list(set(flatten_list(tags)))]
+    tag_list.sort()
+    tags = [x.tags for x in data]
+    return [TagCount(i, flat.count(i)) for i in tag_list]
 
 def get_resource_type_list(data):
     resource_list = list(set([x.type for x in data]))
@@ -68,12 +79,12 @@ def home():
 
 @app.route('/research')
 def research():
-    return render_template('research.html')
+    data = models.Research.query.all()
+    return render_template('research.html', research_list=data)
 
 @app.route('/people')
 def people():
     data = models.User.query.all()
-
     return render_template('people.html', utitle = get_sorted_people(data))
 
 @app.route('/publications')
@@ -81,12 +92,11 @@ def publications():
     data = models.Papers.query.all()
     return render_template('publications.html',
                             uyear=get_sorted_years(data),
-                            utags=get_tag_counts(data))
+                            tag_list=get_tag_counts(data))
 
 @app.route('/resources')
 def resources():
     data = models.Resources.query.all()
-
     return render_template('resources.html',
                             resource_type_list=get_resource_type_list(data),
                             resource_list=data)

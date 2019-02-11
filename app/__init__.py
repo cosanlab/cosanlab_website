@@ -38,7 +38,7 @@ def utility_processor2():
 
 @app.context_processor
 def utility_processor3():
-	def get_position_by_type(title):
-		dat = models.Position.query.filter_by(title = title)
+	def get_paper_by_tag(tag):
+		dat = models.Tags.query.filter_by(name = tag)
 		return dat
-	return dict(get_position_by_type=get_position_by_type)
+	return dict(get_paper_by_tag=get_paper_by_tag)
