@@ -1,6 +1,5 @@
 from app import app, db, models
 from flask import render_template, flash, redirect, jsonify
-import pandas as pd
 
 # Helper Functions
 
