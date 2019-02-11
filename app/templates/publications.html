@@ -2,7 +2,7 @@
 {% set active_page = "publications" %}
 {% block content %}
 
-<div class = "container" style="padding: 10px;">
+<div class = "container" style="padding: 10px">
 	<div class = "row">
 		{% for tag in tag_list %}
 			<button class="btn btn-default filter-button" data-filter="{{ tag.name|replace(' ', '-')}}" style="font-size: {{ tag.count }}+10px;">{{ tag.name }}</button>

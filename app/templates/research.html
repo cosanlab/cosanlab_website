@@ -5,28 +5,39 @@
 	{% set tags = ["Social Interactions", "Affect", "Decision-Making", "Social Learning", "Methods"] %}
 
 	<div class = "jumbotron">
-			<p>Our research is focused on understanding the psychological and neurobiological mechanisms underlying emotion and social interactions.  For example, <b><i>How do we learn about others’ mental states, beliefs, and feelings? What are emotions and how do they impact our social interactions? How do we encode information, compress it, and transmit it to others?</i></b> Answers to these questions could have substantial impact on our overall relationships with others, but might also provide insight into what happens when these processes go awry in psychiatric conditions and the mechanisms that underlie successful psychological and medical treatments. Our approach has several unique aspects that differentiate it from others. First, we attempt to study these questions in their ​<u><i>natural contexts</i></u> ​to ensure that our findings will generalize beyond the laboratory. Second, we try to use <u><i>computational models</i></u> to make precise experimental predictions about complex psychological phenomena, which is necessary to combat our limited cognitive capacity to integrate many independent dimensions of information. Third, studying psychological processes in natural contexts often requires developing <u><i>new measurement and analytic techniques</i></u> and we are committed to developing new open source software and hardware to assist in studying these social and emotional processes.</p>
+			<p>Our research is focused on understanding the psychological and neurobiological mechanisms underlying emotion and social interactions.  For example, <i>How do we learn about others’ mental states, beliefs, and feelings? What are emotions and how do they impact our social interactions? How do we encode information, compress it, and transmit it to others?</i> Answers to these questions could have substantial impact on our overall relationships with others, but might also provide insight into what happens when these processes go awry in psychiatric conditions and the mechanisms that underlie successful psychological and medical treatments. Our approach has several unique aspects that differentiate it from others. First, we attempt to study these questions in their ​<u><i>natural contexts</i></u> ​to ensure that our findings will generalize beyond the laboratory. Second, we try to use <u><i>computational models</i></u> to make precise experimental predictions about complex psychological phenomena, which is necessary to combat our limited cognitive capacity to integrate many independent dimensions of information. Third, studying psychological processes in natural contexts often requires developing <u><i>new measurement and analytic techniques</i></u> and we are committed to developing new open source software and hardware to assist in studying these social and emotional processes.</p>
 	</div>
 
 	<div class="container_research">
 		{% for tag in tags %}
-			<div class="row">
-				<h2>{{ tag }}</h2>
-			</div>
-			<div class="row">
+			<h2 style="margin-top:40px;">{{ tag }}</h2>
+			<div class="container_research_description"
 				{% for topic in research_list %}
 					{% if topic.name == tag %}
-						<p class="standard_font">{{ topic.description }}</p>
+						<p>{{ topic.description }}</p>
 					{% endif %}
 				{% endfor %}
 			</div>
-			{% for research in get_paper_by_tag(tag) %}
-				{% for paper in research.paper %}
-					<div class="row">
-						<a href = "{% if '.pdf' in paper.link %}static/papers/{% endif %}{{ paper.link |e}}">{{paper.citation|e}}</a>
+			<div class="accordion" id="accordion-{{ tag|replace(' ', '-') }}">
+				<div class="card">
+					<div class="card-header" id="accordion-heading-{{ tag|replace(' ', '-') }}">
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse-{{ tag|replace(' ', '-') }}" aria-expanded="true" aria-controls="collapse-{{ tag |replace(' ', '-')}}">
+		          Related Papers
+		        </button>
 					</div>
-				{% endfor %}
-			{% endfor %}
+					<div id="collapse-{{ tag|replace(' ', '-') }}" class="collapse" aria-labelledby="accordion-heading-{{ tag|replace(' ', '-') }}" data-parent="#accordion-{{ tag|replace(' ', '-') }}">
+			      <div class="card-body well">
+							{% for research in get_paper_by_tag(tag) %}
+								{% for paper in research.paper %}
+									<div>
+										<a href = "{% if '.pdf' in paper.link %}static/papers/{% endif %}{{ paper.link |e}}">{{paper.citation|e}}</a>
+									</div>
+								{% endfor %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}

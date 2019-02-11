@@ -124,6 +124,7 @@
 	background-color: #33CCFF;
 	margin-top: 0;
 	margin-bottom: 0;
+	padding: 40px;
 }
 
 h1 {
@@ -189,15 +190,15 @@ h2 {
 
 .research_question {
         color: #000000;
-	list-style-position: inside;
-	text-align: center;
-	font-style: italic;
-	font-size: 18px;
-	padding: 0px;
-	margin: 0px;
-	font-weight: 100;
+				list-style-position: inside;
+				text-align: center;
+				font-style: italic;
+				font-size: 18px;
+				padding: 0px;
+				margin: 0px;
+				font-weight: 100;
         font-family: Helvetica, Arial, sans-serif;
-	letter-spacing: -2px;
+				letter-spacing: -1px;
 }
 
 /* tab formatting */
@@ -237,7 +238,26 @@ nav-tabs {
 }
 
 .container_research {
-	margin: 50px;
+	margin: 0px;
+	padding: 40px;
+}
+
+.container_research_description {
+	padding: 0px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 200;
+	color: #999999;
+	letter-spacing: -1;
+}
+
+.card {
+	padding: 0px;
+	border: 1px;
+}
+
+.card-body {
+	padding: 40px;
 }
 
 .standard_font {
