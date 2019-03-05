@@ -23,7 +23,7 @@
 										<a href = "/static/syllabi/{{ teaching.syllabus }}"><img src="static/img/file_pdf-512.png" height="35"/></a>
 									{% endif %}
 									{% if teaching.code %}
-										<a href = "/static/syllabi/{{ teaching.code }}"><img src="static/img/github.svg" height="35"/></a>
+										<a href = "{{ teaching.code }}"><img src="static/img/github.svg" height="35"/></a>
 									{% endif %}
 								</h3>
 					       <p class="standard_font_box">{{ teaching.description }}</p>
