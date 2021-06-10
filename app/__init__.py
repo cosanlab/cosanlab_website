@@ -2,12 +2,12 @@ import os
 from flask import Flask
 # from flask.ext.sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
-from flask_script import Shell, Manager
+# from flask_script import Shell, Manager
 from flask_migrate import Migrate
 import imp
 
-# basedir = '/Users/lukechang/Github/cosanlab_web'
-basedir = '/home/lukcha5/cosanlab'
+basedir = '/Users/lukechang/Github/cosanlab_web'
+# basedir = '/home/lukcha5/cosanlab'
 keypath = imp.load_source('keys', os.path.join(basedir,'keys.py'))
 keys = keypath.Keys()
 
@@ -16,7 +16,7 @@ app.secret_key = keys.SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = keys.SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-manager = Manager(app)
+# manager = Manager(app)
 
 migrate = Migrate(app, db)
 
