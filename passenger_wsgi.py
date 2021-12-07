@@ -1,6 +1,6 @@
 import sys, os
 
-INTERP = os.path.join(os.environ['HOME'], '/home/lukcha5/cosanlab/venv', 'bin', 'python')
+INTERP = os.path.join(os.environ['HOME'], '/home/lukcha5/venv', 'bin', 'python')
 
 if sys.executable !=INTERP:
 	os.execl(INTERP, INTERP, *sys.argv)
