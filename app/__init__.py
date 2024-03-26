@@ -1,10 +1,6 @@
 import os
 from flask import Flask
-
-# from flask.ext.sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
-
-# from flask_script import Shell, Manager
 from flask_migrate import Migrate
 import imp
 
@@ -18,7 +14,6 @@ app.secret_key = keys.SECRET_KEY
 app.config["SQLALCHEMY_DATABASE_URI"] = keys.SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
-# manager = Manager(app)
 
 migrate = Migrate(app, db)
 
