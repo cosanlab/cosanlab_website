@@ -8,3 +8,4 @@ SQLAlchemy>=2.0.25
 Flask-SQLAlchemy==3.0.2
 Flask-Migrate==4.0.7
 pymysql==1.0.2
+
